@@ -28,15 +28,15 @@
 	<body>
 		<div class="container">
 		<h1>CS184/284A Fall 2026 Homework 1 Write-Up</h1>
-		<div style="text-align: center;">Names: </div>
+		<div style="text-align: center;">Names: Heekyung Lee, Sho (TODO) </div>
 
 		<br>
 
-		Link to webpage: (TODO) <a href="https://cs184.eecs.berkeley.edu/fa26">cs184.eecs.berkeley.edu/fa26</a>
+		Link to webpage: (TODO) <a href="https://cs184.eecs.berkeley.edu/fa26">TODO</a>
 		
 		<br>
 
-		Link to GitHub repository: (TODO) <a href="https://cs184.eecs.berkeley.edu/fa26">cs184.eecs.berkeley.edu/fa26</a>
+		Link to GitHub repository: (TODO) <a href="https://cs184.eecs.berkeley.edu/fa26">TODO</a>
 
 		<figure>
 			<img src="assets/lion.jpg" alt="Lion" style="width:50%"/>
@@ -48,39 +48,32 @@
 		-->
 
 		<h2>Overview</h2>
-		Give a high-level overview of what you implemented in this homework. Think about what you've built as a whole. Share your thoughts on what interesting things you've learned from completing the homework.
+		<p>In this homework we built a simple rasterizer. Task 1 and Task2 implements a basic triangle rasterization and supersampling for antialiasing. Task3 asks for three matrix operations for transformation. Task4 asks for implementation for interpolation of  barycentric coordinates. Task 5 and 6 askes us to implement texture mapping. From this homework, we learned how to implement a basic rasterization pipeline, and be aware of small edge cases that can end up into wrong rendering results.</p>
 
 		<h2>Task 1: Drawing Single-Color Triangles</h2>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		<p>First we take the min and max of the three vertices x and y coordinates to get the bounding box of the triangle. Then we loop over every pixel in that box , test the center by sampling the point location\((x + 0.5,\; y + 0.5)\). For the evaluation of the sample point, we use the three line equations: for each edge \((P_i, P_{i+1})\).
+		<p>Which side of the edge the point is on depends on the sign of \(L_i\), and if all three values are the same positive or negative, the point is inside the triangle. If the point is inside the triangle, we write the color into the sample buffer. We put a  small epsilon for the points that sit exactly on an edge from being dropped.</p> 
+		<p> The two requested images are shown below:</p>
+		<figure>
+			<img src="dd" alt="basic/test4.svg rendered with Task 1 (TODO)" style="width:60%"/>
+			<figcaption>basic/test4.svg with the default viewing parameters. Without antialiasing the thin triangle corners break into disconnected pixels, since only pixels whose center lands inside get filled.</figcaption>
+		</figure>
 
-		<p>Here is an example 2x2 gridlike structure using an HTML table. Each <b>tr</b> is a row and each <b>td</b> is a column in that row. You might find this useful for framing and showing your result images in an organized fashion.</p>
-		<div style="display: flex; flex-direction: column; align-items: center;">
-			<table style="width: 100%; text-align: center; border-collapse: collapse;">
-			  <tr>
-				<td style="text-align: center;">
-				  <img src="assets/lion.jpg" width="400px"/>
-				  <figcaption>Caption goes here.</figcaption>
-				</td>
-				<td style="text-align: center;">
-				  <img src="assets/lion.jpg" width="400px"/>
-				  <figcaption>Caption goes here.</figcaption>
-				</td>
-			  </tr>
-			  <tr>
-				<td style="text-align: center;">
-				  <img src="assets/lion.jpg" width="400px"/>
-				  <figcaption>Caption goes here.</figcaption>
-				</td>
-				<td style="text-align: center;">
-				  <img src="assets/lion.jpg" width="400px"/>
-				  <figcaption>Caption goes here.</figcaption>
-				</td>
-			  </tr>
-			</table>
-		</div>
+		<p><b>Why it is no worse than the bounding-box algorithm.</b> The algorithm we used is the bounding-box algorithm. </p>
 		
 		<h2>Task 2: Antialiasing by Supersampling</h2>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		<p><b>Algorithm of supersampling and code implementations</b> While task 1 took only one sample per pixel, we use supersampling to take more samples per pixel. We use the <code>sample_rate</code> parameter to decide how much we want to supersample. For a sample rate of N, each pixel is split into a \(\sqrt{N} \times \sqrt{N}\) grid of sub-pixels. The sample_buffer vector stores one Color for each sub-pixel, and the <code>resolve_to_framebuffer</code> function averages the colors of all sub-pixels in a pixel to produce the final color for that pixel. The final image is stored in the framebuffer vector, which is then written to a PNG file.</p>
+
+		<p>In <code>rasterize_triangle</code> we keep the same bounding box and the same three line tests from Task 1. There are two modifications in the pipeline: (1) For each pixel in the box we now loop over the \(\sqrt{N} \times \sqrt{N}\) sub-pixels for supersampling. (2) After all shapes are drawn, we put the <code>resolve_to_framebuffer</code> to turn the sample buffer into the final image. For each pixels, color is averaged over all grides and therefore get the blurred results.</p> Supersampling is important for antialiasing, which we could examine jaggies after implementing task1. To mitigate it, we need to sample more points in each pixel for high-frequency signals like edges. By supersampling, pixels that are only partly covered gets a averaged color, so the edges looks smoother and the jaggies are somehow removed. </p>
+
+		<p><b>Results.</b> Below is basic/test4.svg at sample rates 1, 4, 9 and 16.</p>
+		<figure>
+			<img src="assets/task2_test4_rate1.png" alt="Sample rate 1" style="width:32%"/>
+			<img src="assets/task2_test4_rate4.png" alt="Sample rate 4" style="width:32%"/>
+			<img src="assets/task2_test4_rate9.png" alt="Sample rate 9" style="width:32%"/>
+			<img src="assets/task2_test4_rate16.png" alt="Sample rate 16" style="width:32%"/>
+			<figcaption>basic/test4.svg at sample rate 1, 4, 9, and 16.</figcaption>
+		</figure>
 
 		<h2>Task 3: Transforms</h2>
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
