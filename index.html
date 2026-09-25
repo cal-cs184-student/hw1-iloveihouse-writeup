@@ -28,15 +28,15 @@
 	<body>
 		<div class="container">
 		<h1>CS184/284A Fall 2026 Homework 1 Write-Up</h1>
-		<div style="text-align: center;">Names: Heekyung Lee, Sho (TODO) </div>
+		<div style="text-align: center;">Names: Heekyung Lee, Sho Sunoda </div>
 
 		<br>
 
-		Link to webpage: (TODO) <a href="https://cs184.eecs.berkeley.edu/fa26">TODO</a>
+		Link to webpage: <a href="https://cal-cs184-student.github.io/hw1-iloveihouse-writeup/">https://cal-cs184-student.github.io/hw1-iloveihouse-writeup/</a>
 		
 		<br>
 
-		Link to GitHub repository: (TODO) <a href="https://cs184.eecs.berkeley.edu/fa26">TODO</a>
+		Link to GitHub repository: <a href="https://github.com/cal-cs184-student/hw1-iloveihouse">https://github.com/cal-cs184-student/hw1-iloveihouse</a>
 
 		<figure>
 			<img src="assets/lion.jpg" alt="Lion" style="width:50%"/>
@@ -83,7 +83,18 @@
 		</figure>
 
 		<h2>Task 4: Barycentric coordinates</h2>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		<p>Barycentric coordinates are three weights, one per triangle vertex. We use barycentric formula using an area/edge function form (for alpha, beta, gamma = 1-alpha-beta) to interpolate the color by weighting the three vertex colors. In our implementation, we go over using the algorithm from task 1,2 to check if the pixel is inside the triangle, and then color it with barycentric coordinates if so. To see this, here is a single triangle filled in pixel by pixel using its barycentric weights. The corners are assigned red, green, blue and the colors inside are interpolated by barycentric coordinates.</p>
+		<figure>
+			<img src="assets/task4_barycentric_triangle.svg" alt="Triangle with red, green, and blue vertices smoothly blended by barycentric interpolation" style="width:40%"/>
+			<figcaption>Red/green/blue triangle shaded by interpolating the vertex colors with barycentric coordinates.</figcaption>
+		</figure>
+
+		We also append the requested screenshot of <code>svg/basic/test7.svg</code> with default viewing parameters and <code>sample_rate =1</code>.</p>
+		<figure>
+			<img src="TODO" alt="TODO" style="width:40%"/>
+			<figcaption>Task 4: svg/basic/test7.svg</figcaption>
+		</figure>
+
 
 		<h2>Task 5: "Pixel sampling" for texture mapping</h2>
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
