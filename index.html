@@ -50,8 +50,9 @@
 		<p>Which side of the edge the point is on depends on the sign of \(L_i\), and if all three values are the same positive or negative, the point is inside the triangle. If the point is inside the triangle, we write the color into the sample buffer. We put a  small epsilon for the points that sit exactly on an edge from being dropped.</p> 
 		<p> The two requested images are shown below:</p>
 		<figure>
-			<img src="dd" alt="basic/test4.svg rendered with Task 1 (TODO)" style="width:60%"/>
-			<figcaption>basic/test4.svg with the default viewing parameters. Without antialiasing the thin triangle corners break into disconnected pixels, since only pixels whose center lands inside get filled.</figcaption>
+			<img src="assets/screenshot_task1.png" alt="" style="width:30%"/>
+			<img src="assets/screenshot_task1_2.png" alt="" style="width:30%"/>
+			<figcaption>basic/test4.svg with the default viewing parameters.</figcaption>
 		</figure>
 
 		<p><b>Why it is no worse than the bounding-box algorithm.</b> The algorithm we used is the bounding-box algorithm. </p>
@@ -61,20 +62,20 @@
 
 		<p>In <code>rasterize_triangle</code> we keep the same bounding box and the same three line tests from Task 1. There are two modifications in the pipeline: (1) For each pixel in the box we now loop over the \(\sqrt{N} \times \sqrt{N}\) sub-pixels for supersampling. (2) After all shapes are drawn, we put the <code>resolve_to_framebuffer</code> to turn the sample buffer into the final image. For each pixels, color is averaged over all grides and therefore get the blurred results.</p> Supersampling is important for antialiasing, which we could examine jaggies after implementing task1. To mitigate it, we need to sample more points in each pixel for high-frequency signals like edges. By supersampling, pixels that are only partly covered gets a averaged color, so the edges looks smoother and the jaggies are somehow removed. </p>
 
-		<p><b>Results.</b> Below is basic/test4.svg at sample rates 1, 4, 9 and 16.</p>
+		<p><b>Results.</b> Below is basic/test4.svg at sample rates 1, 4, and 16.</p>
 		<figure>
-			<img src="assets/task2_test4_rate1.png" alt="Sample rate 1" style="width:32%"/>
-			<img src="assets/task2_test4_rate4.png" alt="Sample rate 4" style="width:32%"/>
-			<img src="assets/task2_test4_rate9.png" alt="Sample rate 9" style="width:32%"/>
-			<img src="assets/task2_test4_rate16.png" alt="Sample rate 16" style="width:32%"/>
-			<figcaption>basic/test4.svg at sample rate 1, 4, 9, and 16.</figcaption>
+			<img src="assets/screenshot_task2-sr1.png" alt="screenshot_task2-sr1.png" style="width:32%"/>
+			<img src="assets/screenshot_task2-sr4.png" alt="screenshot_task2-sr4.png" style="width:32%"/>
+			<img src="assets/screenshot_task2-sr16.png" alt="screenshot_task2-sr16.png" style="width:32%"/>
+			<figcaption>screenshot_task2-sr1.png, screenshot_task2-sr4.png, screenshot_task2-sr16.png</figcaption>
 		</figure>
 
 		<h2>Task 3: Transforms</h2>
 		<p>For task3, we wrote down three transformation functions : <code>translate</code>, <code>scale</code>, and <code>rotate</code>. With these three functions, we could successfully render a basic robot given. In addition, we also created a new pose of a robot in the gym doing biceps and a squat on the same time. We changed in the svg file to add rotate function in order for the robot to make a nice pose that looks like a weightlifter. The results is shown below:</p>
 		<figure>
-			<img src="TODO" alt="TODO" style="width:40%"/>
-			<figcaption>my_robot.svg: cubeman flexing his arms in a wide, bent-knee stance.</figcaption>
+			<img src="assets/screenshot_task3.png" alt="robot.svg" style="width:40%"/>
+			<img src="assets/screenshot_task3_myrobot.png" alt="my_robot.svg" style="width:40%"/>
+			<figcaption>robot.svg for task3 and my_robot.svg in the gym posing (biceps and squat).</figcaption>
 		</figure>
 
 		<h2>Task 4: Barycentric coordinates</h2>
@@ -86,7 +87,7 @@
 
 		We also append the requested screenshot of <code>svg/basic/test7.svg</code> with default viewing parameters and <code>sample_rate =1</code>.</p>
 		<figure>
-			<img src="TODO" alt="TODO" style="width:40%"/>
+			<img src="assets/screenshot_task4.png" alt="svg/basic/test7.svg" style="width:40%"/>
 			<figcaption>Task 4: svg/basic/test7.svg</figcaption>
 		</figure>
 
