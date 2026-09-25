@@ -50,8 +50,8 @@
 		<p>Which side of the edge the point is on depends on the sign of \(L_i\), and if all three values are the same positive or negative, the point is inside the triangle. If the point is inside the triangle, we write the color into the sample buffer. We put a  small epsilon for the points that sit exactly on an edge from being dropped.</p> 
 		<p> The two requested images are shown below:</p>
 		<figure>
-			<img src="assets/screenshot_task1.png" alt="" style="width:30%"/>
-			<img src="assets/screenshot_task1_2.png" alt="" style="width:30%"/>
+			<img src="assets/screenshot_task1.png" alt="" style="width:50%"/>
+			<img src="assets/screenshot_task1_2.png" alt="" style="width:50%"/>
 			<figcaption>basic/test4.svg with the default viewing parameters.</figcaption>
 		</figure>
 
@@ -64,30 +64,30 @@
 
 		<p><b>Results.</b> Below is basic/test4.svg at sample rates 1, 4, and 16.</p>
 		<figure>
-			<img src="assets/screenshot_task2-sr1.png" alt="screenshot_task2-sr1.png" style="width:32%"/>
-			<img src="assets/screenshot_task2-sr4.png" alt="screenshot_task2-sr4.png" style="width:32%"/>
-			<img src="assets/screenshot_task2-sr16.png" alt="screenshot_task2-sr16.png" style="width:32%"/>
+			<img src="assets/screenshot_task2-sr1.png" alt="screenshot_task2-sr1.png" style="width:50%"/>
+			<img src="assets/screenshot_task2-sr4.png" alt="screenshot_task2-sr4.png" style="width:50%"/>
+			<img src="assets/screenshot_task2-sr16.png" alt="screenshot_task2-sr16.png" style="width:50%"/>
 			<figcaption>screenshot_task2-sr1.png, screenshot_task2-sr4.png, screenshot_task2-sr16.png</figcaption>
 		</figure>
 
 		<h2>Task 3: Transforms</h2>
 		<p>For task3, we wrote down three transformation functions : <code>translate</code>, <code>scale</code>, and <code>rotate</code>. With these three functions, we could successfully render a basic robot given. In addition, we also created a new pose of a robot in the gym doing biceps and a squat on the same time. We changed in the svg file to add rotate function in order for the robot to make a nice pose that looks like a weightlifter. The results is shown below:</p>
 		<figure>
-			<img src="assets/screenshot_task3.png" alt="robot.svg" style="width:40%"/>
-			<img src="assets/screenshot_task3_myrobot.png" alt="my_robot.svg" style="width:40%"/>
+			<img src="assets/screenshot_task3.png" alt="robot.svg" style="width:50%"/>
+			<img src="assets/screenshot_task3_myrobot.png" alt="my_robot.svg" style="width:50%"/>
 			<figcaption>robot.svg for task3 and my_robot.svg in the gym posing (biceps and squat).</figcaption>
 		</figure>
 
 		<h2>Task 4: Barycentric coordinates</h2>
-		<p>Barycentric coordinates are three weights, one per triangle vertex. We use barycentric formula using an area/edge function form (for alpha, beta, gamma = 1-alpha-beta) to interpolate the color by weighting the three vertex colors. In our implementation, we go over using the algorithm from task 1,2 to check if the pixel is inside the triangle, and then color it with barycentric coordinates if so. To see this, here is a single triangle filled in pixel by pixel using its barycentric weights. The corners are assigned red, green, blue and the colors inside are interpolated by barycentric coordinates.</p>
+		<p>Barycentric coordinates are three weights, one per triangle vertex. We use barycentric formula using an area/edge function form (for alpha, beta, gamma = 1-alpha-beta) to interpolate the color by weighting the three vertex colors. In our implementation, we go over using the algorithm from task 1,2 to check if the pixel is inside the triangle, and then color it with barycentric coordinates if so. To see this, here is a single triangle filled in pixel by pixel using its barycentric weights. (We used svg of triangle from subdiv/triangle1.svg) The corners are assigned red, green, blue and the colors inside are interpolated by barycentric coordinates.</p>
 		<figure>
-			<img src="assets/task4_barycentric_triangle.svg" alt="Triangle with red, green, and blue vertices smoothly blended by barycentric interpolation" style="width:40%"/>
-			<figcaption>Red/green/blue triangle shaded by interpolating the vertex colors with barycentric coordinates.</figcaption>
+			<img src="assets/bary_triangle.png" alt="Triangle with red, green, and blue vertices interpolated by barycentric coordinates" style="width:60%"/>
+			<figcaption>Interpolation of vertecies with barycentric coordinates in a triangle</figcaption>
 		</figure>
 
 		We also append the requested screenshot of <code>svg/basic/test7.svg</code> with default viewing parameters and <code>sample_rate =1</code>.</p>
 		<figure>
-			<img src="assets/screenshot_task4.png" alt="svg/basic/test7.svg" style="width:40%"/>
+			<img src="assets/screenshot_task4.png" alt="svg/basic/test7.svg" style="width:60%"/>
 			<figcaption>Task 4: svg/basic/test7.svg</figcaption>
 		</figure>
 
