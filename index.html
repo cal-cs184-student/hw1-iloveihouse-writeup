@@ -13,7 +13,16 @@
 			}
 
 			figure {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				align-items: flex-start;
+				gap: 10px;
 				text-align: center;
+			}
+
+			figcaption {
+				flex-basis: 100%;
 			}
 
 			img {
@@ -32,7 +41,7 @@
 
 		<br>
 
-		Link to webpage: <a href="https://cal-cs184-student.github.io/hw1-iloveihouse-writeup/">https://cal-cs184-student.github.io/hw1-iloveihouse-writeup/</a>
+		Link to webpage: <a href="https://cal-cs184-student.github.io/hw1-iloveihouse-writeup">https://cal-cs184-student.github.io/hw1-iloveihouse-writeup</a>
 		
 		<br>
 
@@ -50,8 +59,8 @@
 		<p>Which side of the edge the point is on depends on the sign of \(L_i\), and if all three values are the same positive or negative, the point is inside the triangle. If the point is inside the triangle, we write the color into the sample buffer. We put a  small epsilon for the points that sit exactly on an edge from being dropped.</p> 
 		<p> The two requested images are shown below:</p>
 		<figure>
-			<img src="assets/screenshot_task1.png" alt="" style="width:50%"/>
-			<img src="assets/screenshot_task1_2.png" alt="" style="width:50%"/>
+			<img src="assets/screenshot_task1.png" alt="" style="width:45%"/>
+			<img src="assets/screenshot_task1_2.png" alt="" style="width:45%"/>
 			<figcaption>basic/test4.svg with the default viewing parameters.</figcaption>
 		</figure>
 
@@ -64,17 +73,17 @@
 
 		<p><b>Results.</b> Below is basic/test4.svg at sample rates 1, 4, and 16.</p>
 		<figure>
-			<img src="assets/screenshot_task2-sr1.png" alt="screenshot_task2-sr1.png" style="width:50%"/>
-			<img src="assets/screenshot_task2-sr4.png" alt="screenshot_task2-sr4.png" style="width:50%"/>
-			<img src="assets/screenshot_task2-sr16.png" alt="screenshot_task2-sr16.png" style="width:50%"/>
+			<img src="assets/screenshot_task2-sr1.png" alt="screenshot_task2-sr1.png" style="width:30%"/>
+			<img src="assets/screenshot_task2-sr4.png" alt="screenshot_task2-sr4.png" style="width:30%"/>
+			<img src="assets/screenshot_task2-sr16.png" alt="screenshot_task2-sr16.png" style="width:30%"/>
 			<figcaption>screenshot_task2-sr1.png, screenshot_task2-sr4.png, screenshot_task2-sr16.png</figcaption>
 		</figure>
 
 		<h2>Task 3: Transforms</h2>
 		<p>For task3, we wrote down three transformation functions : <code>translate</code>, <code>scale</code>, and <code>rotate</code>. With these three functions, we could successfully render a basic robot given. In addition, we also created a new pose of a robot in the gym doing biceps and a squat on the same time. We changed in the svg file to add rotate function in order for the robot to make a nice pose that looks like a weightlifter. The results is shown below:</p>
 		<figure>
-			<img src="assets/screenshot_task3.png" alt="robot.svg" style="width:50%"/>
-			<img src="assets/screenshot_task3_myrobot.png" alt="my_robot.svg" style="width:50%"/>
+			<img src="assets/screenshot_task3.png" alt="robot.svg" style="width:45%"/>
+			<img src="assets/screenshot_task3_myrobot.png" alt="my_robot.svg" style="width:45%"/>
 			<figcaption>robot.svg for task3 and my_robot.svg in the gym posing (biceps and squat).</figcaption>
 		</figure>
 
